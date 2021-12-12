@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "lib": ["ES2021"],
+        "module": "CommonJS",
+        "target": "ES2021",
+        "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "removeComments": true,
+        "allowJs": true,
+        "checkJs": false,
+        "sourceMap": false,
+        "outDir": "./dist"
+    },
+	"include": [ "./src/*" ],
+}

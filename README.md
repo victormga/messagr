@@ -85,7 +85,7 @@ Use cases: anything that doesn't require returning a value to the dispatcher. Ex
 ```typescript
 import Messagr from "@victormga/messagr";
 
-Messagr.listen(/^hello/gi, () => {
+Messagr.listen(/^hello/, () => {
 	console.log("a message starting with hello was dispatched!");
 });
 
@@ -93,6 +93,7 @@ Messagr.listen(/^hello/gi, () => {
 
 Messagr.send("hello world");
 Messagr.send("hello with data", { name: "jhon" });
+// OBS: sending event does not accept RegExp, only string.
 ```
 
 --

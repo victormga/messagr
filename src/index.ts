@@ -118,7 +118,7 @@ class Messagr {
 		this.$interrupters_cache.clear();
 	}
 
-	async say<T>(event: string, input?: any): Promise<T> {
+	async send<T>(event: string, input?: any): Promise<T> {
 		let interrupts = this.$interrupters_cache.get(event);
 		if (interrupts === undefined) {
 			interrupts = this.$interrupters.filter(i => i.event.test(event)).map(i => i.callback);

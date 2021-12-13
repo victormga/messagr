@@ -142,7 +142,7 @@ Messagr.reply("get user", async (data) => {
 const user = await Messagr.send("get user", { uid: 1 });
 console.log(user);
 ```
-Use cases: Anything that requires to return a value to the dispacther. Ex: processing requests, aggregating data, retrieving information, etc.
+Use cases: anything that requires to return a value to the dispacther. Ex: processing requests, aggregating data, retrieving information, etc.
 
 --
 ### Intercepting messages
@@ -174,7 +174,7 @@ console.log(user);
 const user = await Messagr.send("get user", { uid: 42 });
 console.log(user);
 ```
-Use cases: Anything that want to intercept the message before it reaches the repliers, Ex: getting information from cache instead of database, handling special cases, etc.
+Use cases: anything that want to intercept the message before it reaches the repliers, Ex: getting information from cache instead of database, handling special cases, etc.
 
 --
 ### Interrupting messages
@@ -210,7 +210,7 @@ try {
     console.error(e);
 }
 ```
-Use cases: Anything that may want to forbid the message to reach other repliers, Ex: validating messages, checking authentication, permissions, etc.
+Use cases: anything that may want to forbid the message to reach other repliers, Ex: validating messages, checking authentication, permissions, etc.
 
 --
 ### Chaning send

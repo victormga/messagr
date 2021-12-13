@@ -196,7 +196,7 @@ Messagr.interrupt("get user", async (data) => {
 
 // this message will be interrupted, and an exception will be thrown.
 try {
-    const user = await Messagr.send("get user", { uid: "" });	
+    const user = await Messagr.send("get user", { uid: "" });
     console.log(user);
 } catch(e) {
     console.error(e);
@@ -204,13 +204,42 @@ try {
 
 // this message will be replied.
 try {
-    const user = await Messagr.send("get user", { uid: 42 });	
+    const user = await Messagr.send("get user", { uid: 42 });
     console.log(user);
 } catch(e) {
     console.error(e);
 }
 ```
 Use cases: Anything that may want to forbid the message to reach other repliers, Ex: validating messages, checking authentication, permissions, etc.
+
+--
+### Chaning send
+```typescript
+import Messagr from "@victormga/messagr";
+
+Messagr.topic("auth").reply("get user", (data) => {
+    const info = getSession(data.uid);
+    return { name: info.name };
+});
+
+Messagr.topic("auth").interrupt("get user", async (data) => {
+    if (typeof data.uid !== "number") throw new Error("Invalid UserID");
+});
+
+[...]
+
+// as the send method returns an Promise, you can chain it like a normal Promise.
+Messagr
+.topic("authenticated")
+.send("get user", { uid: 42 })
+.then((reply) => {
+    console.log("the message was replied");
+    console.log(reply);
+})
+.catch(err) => {
+    console.log("the message was interrupted");
+};
+```
 
 
 # License

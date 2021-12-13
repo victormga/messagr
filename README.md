@@ -66,11 +66,11 @@ Messagr.send("message with data", { name: "jhon doe" });
 import Messagr from "@victormga/messagr";
 
 Messagr.listen("hello world", () => {
-	console.log("hello world was dispatched!");
+    console.log("hello world was dispatched!");
 });
 
 Messagr.listen("message with data", (data) => {
-	console.log(`data was received: ${data.name}`);
+    console.log(`data was received: ${data.name}`);
 });
 
 [...]
@@ -86,7 +86,7 @@ Use cases: anything that doesn't require returning a value to the dispatcher. Ex
 import Messagr from "@victormga/messagr";
 
 Messagr.listen(/^hello/, () => {
-	console.log("a message starting with hello was dispatched!");
+    console.log("a message starting with hello was dispatched!");
 });
 
 [...]
@@ -102,11 +102,11 @@ Messagr.send("hello with data", { name: "jhon" });
 import Messagr from "@victormga/messagr";
 
 Messagr.listen("hello world", () => {
-	console.log("hello world was dispatched!");
+    console.log("hello world was dispatched!");
 });
 
 Messagr.topic("mytopic").listen("hello world", () => {
-	console.log("hello world on mytopic was dispatched!");
+    console.log("hello world on mytopic was dispatched!");
 });
 
 [...]
@@ -124,16 +124,16 @@ Messagr.topic("mytopic").send("hello world");
 import Messagr from "@victormga/messagr";
 
 Messagr.reply("get user", (data) => {
-	const info = getSession(data.uid);
-	return { name: info.name };
+    const info = getSession(data.uid);
+    return { name: info.name };
 });
 
 [...]
 
 // the same message can have multiple replies.
 Messagr.reply("get user", async (data) => {
-	const phone = await getUserPhone(data.uid);
-	return { phone_number: phone };
+    const phone = await getUserPhone(data.uid);
+    return { phone_number: phone };
 });
 
 [...]
@@ -150,20 +150,20 @@ Use cases: Anything that requires to return a value to the dispacther. Ex: proce
 import Messagr from "@victormga/messagr";
 
 Messagr.reply("get user", (data) => {
-	const info = getSession(data.uid);
-	return { name: info.name };
+    const info = getSession(data.uid);
+    return { name: info.name };
 });
 
 [...]
 
 Messagr.intercept("get user", (data) => {
-	if (data.uid !== 1) return; 
-	// returning void/undefined will not intercept the message.
-	
-	return {
-		name: "el número uno!",
-		phone: "123456789"
-	}
+    if (data.uid !== 1) return; 
+    // returning void/undefined will not intercept the message.
+
+    return {
+        name: "el número uno!",
+        phone: "123456789"
+    }
 });
 
 // this will be intercepted
@@ -182,32 +182,32 @@ Use cases: Anything that want to intercept the message before it reaches the rep
 import Messagr from "@victormga/messagr";
 
 Messagr.reply("get user", (data) => {
-	const info = getSession(data.uid);
-	return { name: info.name };
+    const info = getSession(data.uid);
+    return { name: info.name };
 });
 
 [...]
 
 Messagr.interrupt("get user", async (data) => {
-	if (typeof data.uid !== "number") throw new Error("Invalid UserID");
+    if (typeof data.uid !== "number") throw new Error("Invalid UserID");
 });
 
 [...]
 
 // this message will be interrupted, and an exception will be thrown.
 try {
-	const user = await Messagr.send("get user", { uid: "" });	
-	console.log(user);
+    const user = await Messagr.send("get user", { uid: "" });	
+    console.log(user);
 } catch(e) {
-	console.error(e);
+    console.error(e);
 }
 
 // this message will be replied.
 try {
-	const user = await Messagr.send("get user", { uid: 42 });	
-	console.log(user);
+    const user = await Messagr.send("get user", { uid: 42 });	
+    console.log(user);
 } catch(e) {
-	console.error(e);
+    console.error(e);
 }
 ```
 Use cases: Anything that may want to forbid the message to reach other repliers, Ex: validating messages, checking authentication, permissions, etc.

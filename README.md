@@ -80,6 +80,20 @@ Messagr.send("message with data", { name: "jhon" });
 ```
 Use cases: anything that doesn't require returning a value to the dispatcher. Ex: creating logs, updating caches, sending external requests, etc.
 
+--
+### Using RegExp
+```typescript
+import Messagr from "@victormga/messagr";
+
+Messagr.listen(/^hello/gi, () => {
+	console.log("a message starting with hello was dispatched!");
+});
+
+[...]
+
+Messagr.send("hello world");
+Messagr.send("hello with data", { name: "jhon" });
+```
 
 --
 ### Subscribing to a specific Topic

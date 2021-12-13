@@ -9,7 +9,7 @@ In *Message Oriented Design*, all the communication between the software compone
 This architecture is strongly inspired by [Event-Driven Architeture](https://en.wikipedia.org/wiki/Event-driven_architecture) and [Observer-Pattern Design](https://en.wikipedia.org/wiki/Observer_pattern).
 
 ## Why MOD?
-When a software is becoming complex, organization and extensibility starts to become top priority. Using this architecture allows the developer to create atomic pieces of functionality that can talk with others, without the fear of breaking stuff that's already working, since the only thing trafficking between then are *Messages*.
+When a software is becoming complex, organization and extensibility starts to become top priority. Using this architecture allows the developer to create atomic pieces of functionality that can talk with others, without the fear of breaking stuff that's already working, since the only thing trafficking between them are *Messages*.
 *Actors* can communicate with others at any time, without even knowing who, or the internal logic inside other actors, all they have to agree upon are the *Messages*.
 On top of that, working with *events* is a more natural way to model things that happens in real life, making it easier to abstract complex concepts and turn it into code.
 Got a new web request? What about dispatch a message instead of instantiating a `new IFactoryModelerHttpWebRequestHandlerCreator`?
